@@ -65,28 +65,18 @@ for seat_no_index in range(0,len(list_of_seat_no_str)):     #looping through the
         upto_seat_no = ''
     else:
         upto_seat_no = list_of_seat_no_str[seat_no_index+1]
-    
-    
     start_seat_no_index = all_in_one.find(start_seat_no)
     if upto_seat_no=='':                                    # for handling the last seat number index i.e upto where to look
         end_seat_no_index = None
     else:
         end_seat_no_index = all_in_one.find(upto_seat_no)
-
-# needed some looping cases above below code will be same
-
     single_seat_text = all_in_one[start_seat_no_index:end_seat_no_index]     # taking the block of marks of specific student
-
     list_of_individual = []    
-    
     seat_no_individual = ''
     seat_no_individual = single_seat_text[:5]
     list_of_individual.append([seat_no_individual])
-    
     full_name_individual = ''
-
     name_start_index = 7
-    
     for i in range(3):                                        # looping to get the full name
         name,name_start_index = name_extraction(single_seat_text,name_start_index)
         full_name_individual += ' '+name
@@ -140,17 +130,15 @@ for each_sub in list_of_subjects:
 for sub in list_of_columns: 
     marks_df[sub] = ''
 
-# To handle some Conditions 
-i=0
+# Adding the marks to the data frame
+
 for individual_student in all_students_marks:
     individual_student_single_prepared = []
     for individual_student_item in individual_student:
         for individual_student_item_1 in individual_student_item:
             individual_student_single_prepared.append(individual_student_item_1)
-    if i ==10:
-        print(individual_student_single_prepared)
     marks_df.loc[len(marks_df)] = individual_student_single_prepared
-    i = i + 1
+
     
  print(marks_df.info())
 
